@@ -7,6 +7,11 @@ var trivia = [ {
 var startGame = false;
 var number = 30;
 var interval;
+var questionIndex = 0;
+var correct = 0;
+var incorrect = 0;
+var unAnswered = 0;
+var answerIndex = 0;
 
 // function that decreases number each time it is run and display in time
 function decrement(){
@@ -28,6 +33,36 @@ function stop() {
     clearInterval(interval);
   }
 
+  // write a function that asks a question from the trivia array
+function askQuestion(){
+    var question = trivia[questionIndex].question
+    var possibleAnswers = trivia[questionIndex].possibleAnswers
+    var selectedAnswer;
+    var correctAnswer = trivia[questionIndex].correctAnswer
+
+    // check to see if there is still a question left to ask
+    if(questionIndex <= trivia.length){
+        // display question in question div
+        $("#question").text(question)
+        // loop through possible answers display possible answers in answers div
+        for(var i = 0; i < possibleAnswers.length; i ++){
+            $("#answers").append("<p class='answer'>"+ possibleAnswers[i] + "</p>")
+        }
+        // start timer
+        timer();
+        // set click listener on each answer
+        $(document).on("click", ".answer", function(){
+            // check to see is selectedAnswer === correctAnswer
+            if($(this).text() === correctAnswer){
+                console.log("correct")
+            } else{
+                console.log("incorrect");
+            }
+        })
+    }
+}
+
+
 // At start of game have start button visible and game div hidden
 
 $(document).ready(function() {
@@ -37,17 +72,17 @@ $("#button").on("click", function(){
     $("#button").css("display", "none");
     $("#game").css("display", "inline");
     // run function that starts the game
-    timer();
+    askQuestion();
 
-})
-
-// The timer span counts down from 30
+});
 
 
-// 
-function playGame(){
-    // runs timer
-    timer();
+
+
+
+
+
+
     // The question id displays a question from the array
 
     // the answers div displays all possibleAnswers from the array
@@ -65,5 +100,5 @@ function playGame(){
     // after 20 secods run a timesUp and go to next question and reset timer
 
     // after all the questions have been asked display correct score, incorrect score, and times up
-}
+
 });
