@@ -8,22 +8,13 @@ var startGame = false;
 var number = 30;
 var interval;
 
-// At start of game have start button visible and game div hidden
-
-// When the user hits start, the button is hidden and the game div is visible
-$("#button").on("click", function(){
-    startGame = true;
-    $("#button").css("display", "none");
-    $("#game").css("display", "inline");
-    // run function that starts the game
-    playGame();
-})
-
-// The timer span counts down from 30
 // function that decreases number each time it is run and display in time
 function decrement(){
     number --
     $("#timer").text(number)
+    if(number === 0){
+        stop();
+    }
 }
 
 // function that runs decrement every second
@@ -31,6 +22,27 @@ function timer(){
     clearInterval(interval)
     interval = setInterval(decrement, 1000)
 }
+
+// function that stops the timer
+function stop() {
+    clearInterval(interval);
+  }
+
+// At start of game have start button visible and game div hidden
+
+$(document).ready(function() {
+// When the user hits start, the button is hidden and the game div is visible
+$("#button").on("click", function(){
+    startGame = true;
+    $("#button").css("display", "none");
+    $("#game").css("display", "inline");
+    // run function that starts the game
+    timer();
+
+})
+
+// The timer span counts down from 30
+
 
 // 
 function playGame(){
@@ -54,3 +66,4 @@ function playGame(){
 
     // after all the questions have been asked display correct score, incorrect score, and times up
 }
+});
