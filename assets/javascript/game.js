@@ -5,16 +5,19 @@ var trivia = [ {
 }]
 
 var startGame = false;
-var number = 30;
 var interval;
 var questionIndex = 0;
 var correct = 0;
 var incorrect = 0;
 var unAnswered = 0;
-var answerIndex = 0;
+var question = trivia[questionIndex].question;
+var possibleAnswers = trivia[questionIndex].possibleAnswers;
+var selectedAnswer;
+var correctAnswer = trivia[questionIndex].correctAnswer;
 
 // function that decreases number each time it is run and display in time
 function decrement(){
+    var number = 30;
     number --
     $("#timer").text(number)
     if(number === 0){
@@ -35,33 +38,32 @@ function stop() {
 
   // write a function that asks a question from the trivia array
 function askQuestion(){
-    var question = trivia[questionIndex].question
-    var possibleAnswers = trivia[questionIndex].possibleAnswers
-    var selectedAnswer;
-    var correctAnswer = trivia[questionIndex].correctAnswer
-
     // check to see if there is still a question left to ask
-    if(questionIndex <= trivia.length){
+    if(questionIndex < trivia.length){
+        // starts the timer
+        timer()
         // display question in question div
         $("#question").text(question)
         // loop through possible answers display possible answers in answers div
         for(var i = 0; i < possibleAnswers.length; i ++){
             $("#answers").append("<p class='answer'>"+ possibleAnswers[i] + "</p>")
         }
-        // start timer
-        timer();
-        // set click listener on each answer
-        $(document).on("click", ".answer", function(){
-            // check to see is selectedAnswer === correctAnswer
-            if($(this).text() === correctAnswer){
-                console.log("correct")
-            } else{
-                console.log("incorrect");
-            }
-        })
+        // // start timer
+        // timer();
+
+    } else {
+        // display end of game screen
+        console.log("no more questions");
     }
 }
 
+// function that clears the previous question and answer and increased questionIndex
+function reset(){
+    $("#question").empty();
+    $("#answers").empty();
+    questionIndex++;
+    askQuestion()
+}
 
 // At start of game have start button visible and game div hidden
 
@@ -73,8 +75,22 @@ $("#button").on("click", function(){
     $("#game").css("display", "inline");
     // run function that starts the game
     askQuestion();
-
 });
+$(document).on("click", ".answer", function(){
+    console.log("you clicked on an answer");
+    // check to see if selected answer = correct answer
+    selectedAnswer = $(this).text()
+    if(selectedAnswer === correctAnswer){
+        console.log("Correct")
+        stop()
+        correct++
+    } else {
+        console.log("Wrong")
+        stop()
+        incorrect++
+    }
+    reset()
+})
 
 
 
