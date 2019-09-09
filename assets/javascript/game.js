@@ -4,11 +4,25 @@ var trivia = [ {
     correctAnswer: "Yes"
 }]
 
+var startGame = false;
+var number = 30;
+
 // At start of game have start button visible and game div hidden
 
 // When the user hits start, the button is hidden and the game div is visible
+$("#button").on("click", function(){
+    startGame = true;
+    $("#button").css("display", "none");
+    $("#game").css("display", "inline");
+    // run function that starts the game
+    playGame();
+})
 
 // The timer span counts down from 30
+function decrement(){
+    number --
+}
+
 
 // The question id displays a question from the array
 
