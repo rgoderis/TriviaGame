@@ -6,6 +6,7 @@ var trivia = [ {
 
 var startGame = false;
 var number = 30;
+var interval;
 
 // At start of game have start button visible and game div hidden
 
@@ -19,25 +20,37 @@ $("#button").on("click", function(){
 })
 
 // The timer span counts down from 30
+// function that decreases number each time it is run and display in time
 function decrement(){
     number --
+    $("#timer").text(number)
 }
 
+// function that runs decrement every second
+function timer(){
+    clearInterval(interval)
+    interval = setInterval(decrement, 1000)
+}
 
-// The question id displays a question from the array
+// 
+function playGame(){
+    // runs timer
+    timer();
+    // The question id displays a question from the array
 
-// the answers div displays all possibleAnswers from the array
+    // the answers div displays all possibleAnswers from the array
 
-// set the clicked on aswer to be = userAnswer
+    // set the clicked on aswer to be = userAnswer
 
-// check to see if userAnswer === correctAnswer
+    // check to see if userAnswer === correctAnswer
 
-// if so increase correct score and display correct answer text in question id and play gif
+    // if so increase correct score and display correct answer text in question id and play gif
 
-// if incorrect increase incorrect score show incorrect answer text and play gif
+    // if incorrect increase incorrect score show incorrect answer text and play gif
 
-// if time runs out increase timesUp score show times up text and play gif
+    // if time runs out increase timesUp score show times up text and play gif
 
-// after 20 secods run a timesUp and go to next question and reset timer
+    // after 20 secods run a timesUp and go to next question and reset timer
 
-// after all the questions have been asked display correct score, incorrect score, and times up
+    // after all the questions have been asked display correct score, incorrect score, and times up
+}
