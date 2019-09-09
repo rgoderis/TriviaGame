@@ -22,6 +22,9 @@ function decrement(){
     $("#timer").text(number)
     if(number === 0){
         stop();
+        console.log("times up");
+        unAnswered ++;
+        reset();
     }
 }
 
@@ -77,21 +80,24 @@ $("#button").on("click", function(){
     // run function that starts the game
     askQuestion();
 });
+// lets the user select an answer
 $(document).on("click", ".answer", function(){
     console.log("you clicked on an answer");
     // check to see if selected answer = correct answer
     selectedAnswer = $(this).text()
+    // if correct
     if(selectedAnswer === correctAnswer){
         console.log("Correct")
         stop()
         correct++
+        // if incorrect
     } else {
         console.log("Wrong")
         stop()
         incorrect++
     }
     reset()
-})
+});
 
 
 
