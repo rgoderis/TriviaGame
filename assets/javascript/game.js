@@ -14,10 +14,10 @@ var question = trivia[questionIndex].question;
 var possibleAnswers = trivia[questionIndex].possibleAnswers;
 var selectedAnswer;
 var correctAnswer = trivia[questionIndex].correctAnswer;
+var number = 30;
 
 // function that decreases number each time it is run and display in time
 function decrement(){
-    var number = 30;
     number --
     $("#timer").text(number)
     if(number === 0){
@@ -62,7 +62,8 @@ function reset(){
     $("#question").empty();
     $("#answers").empty();
     questionIndex++;
-    askQuestion()
+    askQuestion();
+    number = 30;
 }
 
 // At start of game have start button visible and game div hidden
