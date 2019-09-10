@@ -47,8 +47,11 @@ function decrement(){
         stop();
         console.log("times up");
         unAnswered ++;
-        reset();
-        askQuestion();
+        $("#question").text("For Shame! You didn't even try to answer!")
+        $("#answers").html("<img src='assets/images/shame.gif' >")
+        setTimeout(reset, 5000);
+        setTimeout(askQuestion,5000);
+        
     }
 }
 
@@ -81,6 +84,11 @@ function askQuestion(){
     } else {
         // display end of game screen
         console.log("no more questions");
+        $("#question").text("Final Score")
+        $("#answers").append("Correct: "+ correct + "<br>")
+        $("#answers").append("Incorrect: "+ incorrect+ "<br>")
+        $("#answers").append("Unanswered: "+ unAnswered+ "<br>")
+
     }
 }
 
@@ -109,16 +117,21 @@ $(document).on("click", ".answer", function(){
     // if correct
     if(selectedAnswer === correctAnswer){
         console.log("Correct")
+        $("#question").text("Correct!")
+        $("#answers").html("<img src='assets/images/correct.gif' >")
         stop()
         correct++
         // if incorrect
     } else {
         console.log("Wrong")
+        $("#question").text("Wrong, the correct answer was " + trivia[questionIndex].correctAnswer)
+        $("#answers").html("<img src='assets/images/wrong.gif' >")
         stop()
         incorrect++
     }
-    reset()
-    askQuestion();
+    // setTimeout(reset, 5000)
+    setTimeout(reset, 5000);
+    setTimeout(askQuestion,5000);
 });
 
 
