@@ -1,19 +1,42 @@
-var trivia = [ {
-    question: "Is the Sky Blue",
-    possibleAnswers: ["Yes", "No"],
-    correctAnswer: "Yes"
-}]
-
+var trivia = [ 
+    { question: "John Snow's sword is called...",
+    possibleAnswers: ["Wolf's Bane", "Long Claw", "Ice", "Oath Keeper"],
+    correctAnswer: "Long Claw"},
+    { question: "What is not one of the free cities",
+    possibleAnswers: ["Braavos", "Volantis", "Pentos", "Quarth"],
+    correctAnswer: "Quarth"},
+    { question: "What are the Lanister house words",
+    possibleAnswers: ["Hear Me Roar", "Family Duty Honor", "Ours Is The Fury", "A Lanister Always Pays His Debts"],
+    correctAnswer: "Hear Me Roar"},
+    { question: "The words, 'Unbent, Unbroken' belong to which house",
+    possibleAnswers: ["Dorn", "Martel", "Tully", "Greyjoy" ],
+    correctAnswer: "Martel"},
+    { question: "Arya Stark trained with which secret society",
+    possibleAnswers: ["The Sons of The Harpy", "The Warlocks", "The Faceless Men", "The Stone Men" ],
+    correctAnswer: "The Faceless Men"},
+    { question: "Which is not a continent is the World of Ice and Fire",
+    possibleAnswers: ["Braavos", "Westeros", "Sothoryos", "Essos"],
+    correctAnswer: "Braavos"},
+    { question: "The Targaryens are descended from which ancient civilization",
+    possibleAnswers: ["Volantis", "Asshai", "Astapor", "Valyria"],
+    correctAnswer: "Valyria"},
+    { question: "In the age of heroes, who is said to have built the Wall",
+    possibleAnswers: ["Bran The Builder", "Garth Greenhand", "Lann The Clever", "Symeon Star-Eyes"],
+    correctAnswer: "Bran The Builder"},
+    { question: "This Stormland castle belonging the the Baratheons is called...",
+    possibleAnswers: ["Storms Rock", "Casterly Rock", "Dragon Stone", "Storms End"],
+    correctAnswer: "Storms End"},
+]
+var question;
+var possibleAnswers;
 var startGame = false;
 var interval;
 var questionIndex = 0;
 var correct = 0;
 var incorrect = 0;
 var unAnswered = 0;
-var question = trivia[questionIndex].question;
-var possibleAnswers = trivia[questionIndex].possibleAnswers;
 var selectedAnswer;
-var correctAnswer = trivia[questionIndex].correctAnswer;
+var correctAnswer;
 var number = 30;
 
 // function that decreases number each time it is run and display in time
@@ -25,6 +48,7 @@ function decrement(){
         console.log("times up");
         unAnswered ++;
         reset();
+        askQuestion();
     }
 }
 
@@ -43,6 +67,9 @@ function stop() {
 function askQuestion(){
     // check to see if there is still a question left to ask
     if(questionIndex < trivia.length){
+        question = trivia[questionIndex].question;
+        possibleAnswers = trivia[questionIndex].possibleAnswers;
+        correctAnswer = trivia[questionIndex].correctAnswer
         // starts the timer
         timer()
         // display question in question div
@@ -51,9 +78,6 @@ function askQuestion(){
         for(var i = 0; i < possibleAnswers.length; i ++){
             $("#answers").append("<p class='answer'>"+ possibleAnswers[i] + "</p>")
         }
-        // // start timer
-        // timer();
-
     } else {
         // display end of game screen
         console.log("no more questions");
@@ -65,11 +89,8 @@ function reset(){
     $("#question").empty();
     $("#answers").empty();
     questionIndex++;
-    askQuestion();
     number = 30;
 }
-
-// At start of game have start button visible and game div hidden
 
 $(document).ready(function() {
 // When the user hits start, the button is hidden and the game div is visible
@@ -97,22 +118,9 @@ $(document).on("click", ".answer", function(){
         incorrect++
     }
     reset()
+    askQuestion();
 });
 
-
-
-
-
-
-
-
-    // The question id displays a question from the array
-
-    // the answers div displays all possibleAnswers from the array
-
-    // set the clicked on aswer to be = userAnswer
-
-    // check to see if userAnswer === correctAnswer
 
     // if so increase correct score and display correct answer text in question id and play gif
 
