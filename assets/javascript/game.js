@@ -3,8 +3,8 @@ var trivia = [
     possibleAnswers: ["Wolf's Bane", "Long Claw", "Ice", "Oath Keeper"],
     correctAnswer: "Long Claw"},
     { question: "What is not one of the free cities",
-    possibleAnswers: ["Braavos", "Volantis", "Pentos", "Quarth"],
-    correctAnswer: "Quarth"},
+    possibleAnswers: ["Braavos", "Volantis", "Pentos", "Qarth"],
+    correctAnswer: "Qarth"},
     { question: "What are the Lanister house words",
     possibleAnswers: ["Hear Me Roar", "Family Duty Honor", "Ours Is The Fury", "A Lanister Always Pays His Debts"],
     correctAnswer: "Hear Me Roar"},
@@ -47,10 +47,10 @@ function decrement(){
         stop();
         console.log("times up");
         unAnswered ++;
-        $("#question").text("For Shame! You didn't even try to answer!")
+        $("#question").text("For Shame! You didn't even try to answer! The correct answer was " + trivia[questionIndex].correctAnswer)
         $("#answers").html("<img src='assets/images/shame.gif' >")
-        setTimeout(reset, 3000);
-        setTimeout(askQuestion,3000);
+        setTimeout(reset, 2500);
+        setTimeout(askQuestion,2500);
         
     }
 }
@@ -145,8 +145,8 @@ $(document).on("click", ".answer", function(){
         incorrect++
     }
     // setTimeout(reset, 3000)
-    setTimeout(reset, 3000);
-    setTimeout(askQuestion,3000);
+    setTimeout(reset, 2500);
+    setTimeout(askQuestion,2500);
 });
 
 // set click listener on reset to restart the game
