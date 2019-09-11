@@ -49,8 +49,8 @@ function decrement(){
         unAnswered ++;
         $("#question").text("For Shame! You didn't even try to answer!")
         $("#answers").html("<img src='assets/images/shame.gif' >")
-        setTimeout(reset, 5000);
-        setTimeout(askQuestion,5000);
+        setTimeout(reset, 3000);
+        setTimeout(askQuestion,3000);
         
     }
 }
@@ -88,6 +88,8 @@ function askQuestion(){
         $("#answers").append("Correct: "+ correct + "<br>")
         $("#answers").append("Incorrect: "+ incorrect+ "<br>")
         $("#answers").append("Unanswered: "+ unAnswered+ "<br>")
+        $("#reset").css("display", "inline")
+        
 
     }
 }
@@ -130,9 +132,9 @@ $(document).on("click", ".answer", function(){
         stop()
         incorrect++
     }
-    // setTimeout(reset, 5000)
-    setTimeout(reset, 5000);
-    setTimeout(askQuestion,5000);
+    // setTimeout(reset, 3000)
+    setTimeout(reset, 3000);
+    setTimeout(askQuestion,3000);
 });
 
 

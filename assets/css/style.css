@@ -9,6 +9,14 @@ body {
     /* background-image: url("../images/body-background.jpg"); */
 }
 
+#game{
+    display: none;
+}
+
+#reset{
+    display: none;
+}
+
 .answer:hover{
     font-weight: 700;
 }
