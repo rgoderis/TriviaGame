@@ -108,10 +108,11 @@ function restartGame(){
     correct = 0;
     incorrect = 0;
     unAnswered = 0;
-    startGame = false;
-    $("#button").css("display", "inline");
-    $("#game").css("display", "none");   
+    startGame = false;   
     $("#restart").css("display", "none");
+    $("#question").empty();
+    $("#answers").empty();
+    askQuestion();
 }
 
 $(document).ready(function() {
