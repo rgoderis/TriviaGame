@@ -79,7 +79,7 @@ function askQuestion(){
         $("#question").text(question)
         // loop through possible answers display possible answers in answers div
         for(var i = 0; i < possibleAnswers.length; i ++){
-            $("#answers").append("<p class='answer'>"+ possibleAnswers[i] + "</p>")
+            $("#answers").append("<p class='answer hoverable'>"+ possibleAnswers[i] + "</p>")
         }
     } else {
         // display end of game screen

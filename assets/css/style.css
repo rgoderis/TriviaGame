@@ -1,9 +1,14 @@
 body {
-    background-image: "";
+    background-image: url("../images/body-background.jpg");
+    width: 100%;
 }
 
 #content{
     margin-top:10%;
     margin-bottom: 10%;
-    background-image: "";
+    /* background-image: url("../images/body-background.jpg"); */
+}
+
+.answer:hover{
+    font-weight: 700;
 }
