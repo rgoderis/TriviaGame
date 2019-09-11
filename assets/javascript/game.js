@@ -37,7 +37,7 @@ var incorrect = 0;
 var unAnswered = 0;
 var selectedAnswer;
 var correctAnswer;
-var number = 30;
+var number = 15;
 
 // function that decreases number each time it is run and display in time
 function decrement(){
@@ -97,7 +97,8 @@ function reset(){
     $("#question").empty();
     $("#answers").empty();
     questionIndex++;
-    number = 30;
+    number = 15;
+    $("#timer").text(number)
 }
 
 $(document).ready(function() {
