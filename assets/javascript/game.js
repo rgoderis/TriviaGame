@@ -88,9 +88,7 @@ function askQuestion(){
         $("#answers").append("Correct: "+ correct + "<br>")
         $("#answers").append("Incorrect: "+ incorrect+ "<br>")
         $("#answers").append("Unanswered: "+ unAnswered+ "<br>")
-        $("#reset").css("display", "inline")
-        
-
+        $("#restart").css("display", "inline")
     }
 }
 
@@ -101,6 +99,19 @@ function reset(){
     questionIndex++;
     number = 15;
     $("#timer").text(number)
+}
+
+// function that restarts game
+function restartGame(){
+    number = 15;
+    questionIndex = 0;
+    correct = 0;
+    incorrect = 0;
+    unAnswered = 0;
+    startGame = false;
+    $("#button").css("display", "inline");
+    $("#game").css("display", "none");   
+    $("#restart").css("display", "none");
 }
 
 $(document).ready(function() {
@@ -137,15 +148,10 @@ $(document).on("click", ".answer", function(){
     setTimeout(askQuestion,3000);
 });
 
-
-    // if so increase correct score and display correct answer text in question id and play gif
-
-    // if incorrect increase incorrect score show incorrect answer text and play gif
-
-    // if time runs out increase timesUp score show times up text and play gif
-
-    // after 20 secods run a timesUp and go to next question and reset timer
-
-    // after all the questions have been asked display correct score, incorrect score, and times up
+// set click listener on reset to restart the game
+$("#restart").on("click", function(){
+    // call function restartGame
+    restartGame()
+})
 
 });
