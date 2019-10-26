@@ -26,7 +26,7 @@ var trivia = [
     { question: "This Stormland castle belonging the the Baratheons is called...",
     possibleAnswers: ["Storms Rock", "Casterly Rock", "Dragon Stone", "Storms End"],
     correctAnswer: "Storms End"},
-]
+];
 var question;
 var possibleAnswers;
 var startGame = false;
